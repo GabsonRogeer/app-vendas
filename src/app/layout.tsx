@@ -1,3 +1,4 @@
+"use client";
 import 'bulma/css/bulma.css'
 
 export const metadata = {
