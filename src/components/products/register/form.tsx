@@ -1,56 +1,54 @@
 "use client";
 
+import { FormInput } from '@/components/common';
 import {useState} from 'react'
 
 export default function Form () {
-    const [sku, setSku] = useState('')
-    const [preco, setPreco] = useState('')
-    const [nome, setNome] = useState('')
-    const [descricao, setDescricao] = useState('')
+    const [sku, setSku] = useState<string>('')
+    const [price, setPrice] = useState<string>('')
+    const [name, setName] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
 
     const submit = () => {
         const product = {
-            sku, preco, nome, descricao
+            sku, price, name, description
         }
         console.log(product)
     }
     return (
         <>
-        <div className="columns">
-                <div className="field is-half column">
-                    <label htmlFor="inputSku" className="label">SKU: *</label>
-                    <div className="control">
-                        <input className="input" type="text"
-                            id="inputSku" value={sku} onChange={event => setSku(event.target.value)}
-                            placeholder="Digite o SKU do produto" />
-                    </div>
-                </div>
-                <div className="field is-half column">
-                    <label htmlFor="inputPreco" className="label">Preço: *</label>
-                    <div className="control">
-                        <input className="input" type="text"
-                            id="inputPreco" value={preco} onChange={event => setPreco(event.target.value)}
-                            placeholder="Digite o Preço do produto" />
-                    </div>
-                </div>
+            <div className="columns">
+                <FormInput onChange={setSku}
+                    label='SKU *' 
+                    id='inputSku'
+                    placeholder='Digite o SKU do produto'
+                    columnClasses='is-half'
+                    value={sku} />
+
+                <FormInput onChange={setPrice}
+                    label='Preço *' 
+                    id='inputPrice'
+                    placeholder='Digite o preço do produto'
+                    columnClasses='is-half'
+                    value={price} />
             </div>
 
             <div className="columns">
-                <div className="field column is-full">
-                    <label htmlFor="inputNome" className="label">Nome do Produto: *</label>
-                    <div className="control">
-                        <input className="input" type="text"
-                            id="inputNome" value={nome} onChange={event => setNome(event.target.value)}
-                            placeholder="Digite o Nome do produto" />
-                    </div>
-                </div>
+
+            <FormInput onChange={setName}
+                    label='Nome do Produto: *' 
+                    id='inputName'
+                    placeholder='Digite o Nome do produto'
+                    columnClasses='is-full'
+                    value={name} />
+            
             </div>
             
             <div className="field">
-                <label htmlFor="inputDescricao" className="label">Nome do Produto: *</label>
+                <label htmlFor="inputDescricao" className="label">Descrição detalhada do Produto: </label>
                 <div className="control">
                     <textarea className="textarea"
-                        id="inputDescricao" value={descricao} onChange={event => setDescricao(event.target.value)}
+                        id="inputDescricao" value={description} onChange={event => setDescription(event.target.value)}
                         placeholder="Digite a Descricao detalhada do produto" />
                 </div>
             </div>
