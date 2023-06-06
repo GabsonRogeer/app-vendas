@@ -2,18 +2,29 @@
 
 import { FormInput } from '@/components/common';
 import {useState} from 'react'
+import { useProductService } from '@/app/services';
+import { Products } from '@/app/models/products';  
+
 
 export default function Form () {
+
+    const service = useProductService()
     const [sku, setSku] = useState<string>('')
     const [price, setPrice] = useState<string>('')
     const [name, setName] = useState<string>('')
     const [description, setDescription] = useState<string>('')
 
     const submit = () => {
-        const product = {
-            sku, price, name, description
+        const product: Products = {
+            sku,
+            price: parseFloat(price),
+            name,
+            description
         }
-        console.log(product)
+
+        service
+            .save(product)
+            .then(productResponse => console.log(productResponse))
     }
     return (
         <>

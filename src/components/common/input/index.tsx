@@ -5,8 +5,6 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
     onChange: (value: any) => void;
     label: string;
     columnClasses?: string
-    htmlFor: string
-    
 }
 
 export const FormInput: React.FC<FormInputProps> = ({
