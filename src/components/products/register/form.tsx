@@ -1,7 +1,7 @@
 "use client";
 
 import { FormInput } from '@/components/common';
-import {useState} from 'react'
+import { useState } from 'react'
 import { useProductService } from '@/app/services';
 import { Products } from '@/app/models/products';  
 
@@ -21,6 +21,10 @@ export default function Form () {
             name,
             description
         }
+        setSku('')
+        setPrice('')
+        setName('')
+        setDescription('')
 
         service
             .save(product)
